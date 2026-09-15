@@ -59,55 +59,6 @@
       </section>
     </main>
 
-    <script>
-      const form = document.querySelector("#connection-form");
-      const input = document.querySelector("#server-url");
-      const button = document.querySelector("#connect-button");
-      const error = document.querySelector("#connection-error");
-
-      function showError(message) {
-        error.textContent = message;
-        error.hidden = false;
-      }
-
-      function normalizeUrl(value) {
-        const url = new URL(value.trim());
-        if (!/^https?:$/.test(url.protocol) || !url.hostname || url.username || url.password) {
-          throw new Error();
-        }
-        url.hash = "";
-        return url.href;
-      }
-
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        error.hidden = true;
-
-        let url;
-        try {
-          url = normalizeUrl(input.value);
-        } catch {
-          showError("Enter a full http:// or https:// address with a hostname.");
-          input.focus();
-          return;
-        }
-
-        const launcher = window.Capacitor?.registerPlugin?.("LauncherConfig");
-        if (!launcher) {
-          showError("Lamplit Mobile could not save this address. Reopen the app and try again.");
-          return;
-        }
-
-        button.disabled = true;
-        button.textContent = "Opening Lamplit…";
-        try {
-          await launcher.configure({ url });
-        } catch (cause) {
-          button.disabled = false;
-          button.textContent = "Connect to Lamplit";
-          showError(cause?.message || "Lamplit Mobile could not save this address. Try again.");
-        }
-      });
-    </script>
+    <script type="module" src="./launcher.js"></script>
   </body>
 </html>

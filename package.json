@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "web:build": "bunx @tailwindcss/cli -i ./styles/launcher.css -o ./www/launcher.css --minify",
+    "web:build": "bunx @tailwindcss/cli -i ./styles/launcher.css -o ./www/launcher.css --minify && bun build ./src/launcher.ts --outdir ./www --minify",
     "android:sync": "bun run web:build && cap sync android",
     "android:apk": "bun run android:sync && cd android && JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home ./gradlew assembleDebug",
     "android:install": "bun run android:apk && adb install -r android/app/build/outputs/apk/debug/app-debug.apk"
