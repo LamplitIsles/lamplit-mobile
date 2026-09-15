@@ -1,9 +1,64 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="night">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KeposAI</title>
+    <meta name="theme-color" content="#0b1324" />
+    <link rel="stylesheet" href="./launcher.css" />
+    <title>Connect Lamplit</title>
   </head>
-  <body></body>
+  <body>
+    <main class="connection-stage">
+      <div class="connection-orb connection-orb-one" aria-hidden="true"></div>
+      <div class="connection-orb connection-orb-two" aria-hidden="true"></div>
+
+      <section class="connection-panel card" aria-labelledby="connection-title">
+        <div class="card-body connection-panel-body">
+          <div class="connection-presence" aria-hidden="true">
+            <span class="connection-mark">L</span>
+            <span class="status status-success connection-status"></span>
+          </div>
+
+          <p class="connection-kicker">LAMPLIT MOBILE</p>
+          <h1 id="connection-title" class="card-title connection-title">Where should we meet?</h1>
+          <p class="connection-copy">
+            Enter the address of your Lamplit server. It can be on this phone,
+            your home network, or your Tailscale network.
+          </p>
+
+          <form id="connection-form" class="connection-form" novalidate>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Lamplit address</legend>
+              <input
+                id="server-url"
+                class="input input-lg connection-input"
+                type="url"
+                inputmode="url"
+                autocomplete="url"
+                autocapitalize="none"
+                spellcheck="false"
+                placeholder="https://lamplit.tailnet.ts.net/"
+                required
+              />
+              <p class="label">Use the full address, including <code>https://</code> or <code>http://</code>.</p>
+            </fieldset>
+
+            <div id="connection-error" class="alert alert-error connection-error" role="alert" hidden></div>
+
+            <div class="card-actions connection-actions">
+              <button id="connect-button" class="btn btn-primary btn-lg connection-button" type="submit">
+                Connect to Lamplit
+              </button>
+            </div>
+          </form>
+
+          <p class="connection-note">
+            This address stays only in this app on your phone. You can clear it from Android app storage.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./launcher.js"></script>
+  </body>
 </html>
