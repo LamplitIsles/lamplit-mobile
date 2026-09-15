@@ -2,5 +2,6 @@
 
 ## Glossary
 
-- **KeposAI** — The foreground-only Android launcher for the Kepos local web application on the same device. It owns opening that application, not its user interface, transport, session lifecycle, or background persistence.
-- **Kepos local web application** — The application served at `http://prod-lamplit.localhost:17480/` and rendered inside KeposAI.
+- **KeposAI** — The foreground-only Android launcher for a user-selected Lamplit web application. It owns selecting and opening that application, not its user interface, transport, session lifecycle, or background persistence.
+- **Launch URL** — The complete HTTP(S) address of the Lamplit web application selected by the device owner and stored in KeposAI's private app storage.
+- **Lamplit web application** — The application rendered inside KeposAI at the selected Launch URL.

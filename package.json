@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "android:sync": "cap sync android",
+    "web:build": "bunx @tailwindcss/cli -i ./styles/launcher.css -o ./www/launcher.css --minify",
+    "android:sync": "bun run web:build && cap sync android",
     "android:apk": "bun run android:sync && cd android && JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home ./gradlew assembleDebug",
     "android:install": "bun run android:apk && adb install -r android/app/build/outputs/apk/debug/app-debug.apk"
   },
@@ -15,6 +16,9 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^8.5.0",
+    "@tailwindcss/cli": "^4.3.3",
+    "daisyui": "^5.7.38",
+    "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2"
   }
 }
