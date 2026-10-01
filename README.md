@@ -20,3 +20,18 @@ bun run android:install
 ```
 
 The local build uses Homebrew OpenJDK 21, as required by Capacitor 8.
+
+The Android shell includes Camera, Keyboard, and App plugins. Remote pages can
+call `Keyboard.hide()` and `Camera.takePhoto({ saveToGallery: false })`.
+Pages should listen for `App.addListener('appRestoredResult', ...)` to recover
+camera results if Android terminates the shell while the camera Activity is open.
+Camera 8.2.3 saves/restores its legacy camera flow; its newer `takePhoto` flow
+keeps the pending call in memory. Recovery of `takePhoto` after process death
+therefore requires separate device verification and is not guaranteed by merely
+installing the App plugin.
+The App plugin's back button handler is disabled to preserve the shell's existing
+back behavior, including when loading a custom server URL.
+
+Keyboard `resizeOnFullScreen` is left at its default (`false`). This integration
+does not override soft input mode, edge-to-edge behavior, or system bar styling.
+The shell compiles and targets Android API 36, with a minimum API of 24.
