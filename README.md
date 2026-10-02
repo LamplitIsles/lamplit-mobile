@@ -35,3 +35,12 @@ back behavior, including when loading a custom server URL.
 Keyboard `resizeOnFullScreen` is left at its default (`false`). This integration
 does not override soft input mode, edge-to-edge behavior, or system bar styling.
 The shell compiles and targets Android API 36, with a minimum API of 24.
+
+## Companion photo saving
+
+The Android shell includes `@capacitor-community/media` 9.1.0 for Capacitor 8.
+Companion uses it to create/reuse the **Lamplit** application album and save
+original image bytes. Keep the plugin's default `androidGalleryMode: false`;
+this app does not need permission to browse the user's entire photo library.
+After adding or updating native plugins, run `bun run android:sync` and rebuild
+the APK. An already installed shell must be updated before this feature works.
