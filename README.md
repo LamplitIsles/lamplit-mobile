@@ -36,7 +36,10 @@ Keyboard `resizeOnFullScreen` is left at its default (`false`). This integration
 does not override soft input mode, edge-to-edge behavior, or system bar styling.
 The shell compiles and targets Android API 36, with a minimum API of 24.
 
-## Companion photo saving
+## Companion copying and photo saving
+
+The Android shell also includes `@capacitor/clipboard` 8.0.1 so Companion can
+copy messages to the system clipboard even over a plain HTTP LAN connection.
 
 The Android shell includes `@capacitor-community/media` 9.1.0 for Capacitor 8.
 Companion uses it to create/reuse the **Lamplit** application album and save
